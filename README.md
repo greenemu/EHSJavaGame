@@ -1,4 +1,0 @@
-EHSJavaGame
-===========
-
-For Melissa.
