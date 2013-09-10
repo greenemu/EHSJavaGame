@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="GravitySimulation.jnlp">
+  <information>
+    <title>GravitySimulation</title>
+    <vendor>CAM</vendor>
+    <description>Sample JavaFX 2.0 application.</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <jfx:javafx-runtime version="2.2+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
+  </resources>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="GravitySimulation.jar" size="21738" download="eager" />
+    <jar href="lib/deploy.jar" size="4204006" download="eager" />
+    <jar href="lib/javaws.jar" size="903903" download="eager" />
+    <jar href="lib/jfxrt.jar" size="15102694" download="eager" />
+    <jar href="lib/plugin.jar" size="1790154" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="GravitySimulation" >
+    <param name="requiredFXVersion" value="2.2+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="gravitysimulation.GravitySimulation"  name="GravitySimulation" />
+  <update check="always"/>
+</jnlp>
