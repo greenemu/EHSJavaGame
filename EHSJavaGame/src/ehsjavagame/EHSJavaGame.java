@@ -4,15 +4,18 @@
  */
 package ehsjavagame;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * EHS Java Game
@@ -27,10 +30,10 @@ public class EHSJavaGame extends Application {
     
     // class variables (player, asteroids, etc.)
     // player variables
-    private Circle player = new Circle(0, 0, 10);
+    private Circle player = new Circle(0, -60, 10);
     int playerMass = 100;
-    double playerVelocityX = 0.0;
-    double playerVelicityY = 0.0;
+    double playerVelocityX = 20.0;
+    double playerVelocityY = 0.0;
     
     // asteroid variables
     Circle asteroid0 = new Circle(0, 60, 50);
@@ -39,9 +42,7 @@ public class EHSJavaGame extends Application {
     // the root pane
     Pane root = new Pane();
     
-    // the scene
-    
-    
+    // all the stuff that needs to be done before the game runs
     public void gameInit() {
             double windowWidth = root.getWidth();
             double windowHeight = root.getHeight();
@@ -57,6 +58,24 @@ public class EHSJavaGame extends Application {
             root.getChildren().add(asteroid0);
             root.getChildren().add(player);
     }
+    
+    // calculate the distance between two circles
+    double calculateDistance(Circle obj1, Circle obj2) {
+        double obj1X = obj1.getCenterX();
+        double obj2X = obj2.getCenterX();
+        double obj1Y = obj1.getCenterY();
+        double obj2Y = obj2.getCenterY();
+        double distance = Math.sqrt((obj2X - obj2X) * (obj1X - obj2X) + (obj1Y - obj2Y) * (obj1Y - obj2Y));
+        return distance;
+        
+    }
+    
+    // calculates gravity based on Newton's equation.
+    double calculateGravitationalForce(int mass1, int mass2, double distance) {
+        double force = (mass1 * mass2) / (distance * distance);
+        return force;
+    }
+    
     @Override
     public void start(Stage primaryStage) {
         Scene scene = new Scene(root, 640, 480);
@@ -64,7 +83,7 @@ public class EHSJavaGame extends Application {
         primaryStage.setTitle("EHS Java Game");
         primaryStage.setScene(scene);
         primaryStage.show();
-        System.out.println(root.getWidth());
+        startGame();
     }
 
     /**
